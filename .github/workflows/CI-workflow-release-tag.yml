@@ -1,3 +1,5 @@
+name: CI-workflow-release-tag
+
 on:
   push:
     # Sequence of patterns matched against refs/tags
