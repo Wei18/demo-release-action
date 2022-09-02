@@ -18,8 +18,3 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
-      - uses: apexskier/github-release-commenter@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          comment-template: |
-            Release {release_link} addresses this.
