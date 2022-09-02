@@ -2,7 +2,11 @@ name: CI-workflow-comment-release-on-pr
 
 on:
   release:
-    types: [published]
+    types:
+      - created
+      - published
+      - prereleased
+      - released
 
 jobs:
   release:
@@ -12,4 +16,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           comment-template: |
-            Release {release_link} addresses this.
+            Release {release_link} here.
