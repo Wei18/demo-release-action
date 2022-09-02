@@ -1,0 +1,18 @@
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - '*.*.*' # Push events to matching v*, i.e. v1.0, v20.15.10, 4.6.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: 🏈 Wei test ${{ github.ref }}
+          generate_release_notes: true
+          discussion_category_name: Releases
