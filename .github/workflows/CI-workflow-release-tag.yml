@@ -24,6 +24,7 @@ jobs:
       #     release_id: ${{ steps.create_release.outputs.id }}
 
   comment-on-pr:
+    needs: release
     runs-on: ubuntu-latest
     steps:
       - uses: apexskier/github-release-commenter@v1
