@@ -17,6 +17,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          name: 🏈 Wei test ${{ github.ref }}
+          name: 🏈 Wei test ${GITHUB_REF##*/}
           generate_release_notes: true
+          token: ${{ github.token }}
           discussion_category_name: Releases
