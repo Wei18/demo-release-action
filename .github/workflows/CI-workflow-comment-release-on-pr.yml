@@ -2,7 +2,11 @@ name: CI-workflow-comment-release-on-pr
 
 on:
   release:
-    types: [published]
+    types:
+      - created
+      - published
+      - prereleased
+      - released
 
 jobs:
   release:
