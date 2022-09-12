@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: create-pull-request
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-pull-request-into-develop-from-master:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        ref: master
+
+    - name: Create Pull Request
+      id: cpr
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.PAT }}
+
+    - name: Enable Pull Request Automerge
+      if: steps.cpr.outputs.pull-request-operation == 'created'
+      uses: peter-evans/enable-pull-request-automerge@v2
+      with:
+        token: ${{ secrets.PAT }}
+        pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+
+    - name: Auto Approve
+      if: steps.cpr.outputs.pull-request-operation == 'created'
+      uses: juliangruber/approve-pull-request-action@v1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        number: ${{ steps.cpr.outputs.pull-request-number }}    
