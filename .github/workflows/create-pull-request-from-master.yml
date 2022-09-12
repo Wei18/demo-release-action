@@ -18,7 +18,7 @@ jobs:
       id: cpr
       uses: repo-sync/pull-request@v2
       with:
-        token: ${{ secrets.PAT }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         source_branch: master # head
         destination_branch: develop
 
@@ -33,5 +33,5 @@ jobs:
       if: steps.cpr.outputs.pull-request-operation == 'created'
       uses: juliangruber/approve-pull-request-action@v1
       with:
-        # github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         number: ${{ steps.cpr.outputs.pr_number }}    
