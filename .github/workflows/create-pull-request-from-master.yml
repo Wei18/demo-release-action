@@ -9,16 +9,13 @@ jobs:
   create-pull-request-into-develop-from-master:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        ref: master
-
     - name: Create Pull Request
       id: cpr
-      uses: peter-evans/create-pull-request@v3
+      uses: peter-evans/create-pull-request@v4
       with:
         token: ${{ secrets.PAT }}
+        base: develop
+        branch: master # head
 
     - name: Enable Pull Request Automerge
       if: steps.cpr.outputs.pull-request-operation == 'created'
