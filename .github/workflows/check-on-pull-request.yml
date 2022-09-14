@@ -1,0 +1,25 @@
+name: check-on-pull-request
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+    branches:
+      - develop
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  check-on-pull-request:
+    runs-on: self-hosted
+    steps:
+      - name: branch-not-out-of-date 
+        # GITHUB_EVENT_NAME: 
+        # https://docs.github.com/en/actions/learn-github-actions/environment-variables
+        if: github.event_name == 'pull_request_target'
+        uses: guyarb/deny-not-updated-branch@v1.1.0
