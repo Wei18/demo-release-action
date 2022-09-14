@@ -1,10 +1,12 @@
 name: check-on-pull-request
 
 on:
-  pull_request_target:
+  pull_request:
     types:
       - opened
       - synchronize
+
+  pull_request_target:
     branches:
       - develop
       - master
@@ -16,7 +18,7 @@ concurrency:
 jobs:
 
   check-on-pull-request:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: branch-not-out-of-date 
         # GITHUB_EVENT_NAME: 
