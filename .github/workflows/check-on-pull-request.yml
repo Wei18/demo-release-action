@@ -16,7 +16,7 @@ concurrency:
 jobs:
 
   check-on-pull-request:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: branch-not-out-of-date 
         # GITHUB_EVENT_NAME: 
