@@ -23,5 +23,5 @@ jobs:
       - name: branch-not-out-of-date 
         # GITHUB_EVENT_NAME: 
         # https://docs.github.com/en/actions/learn-github-actions/environment-variables
-        if: github.event_name == 'pull_request_target'
+        if: github.event_name == 'pull_request'
         uses: guyarb/deny-not-updated-branch@v1.1.0
