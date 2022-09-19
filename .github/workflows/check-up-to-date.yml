@@ -1,0 +1,11 @@
+name: workflow
+
+on:
+  pull_request_target:
+
+jobs:
+  full_ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: wei18/deny-not-updated-branch@v1.1.0
