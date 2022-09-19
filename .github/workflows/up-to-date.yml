@@ -10,3 +10,5 @@ jobs:
       - name: Handle pull request
         if: github.event_name == 'pull_request_target'
         uses: Automattic/action-pr-is-up-to-date@v2
+        with:
+          tag: latest
