@@ -17,7 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: release-drafter/release-drafter@v5
+<<<<<<< HEAD
         with:
           config-name: release-drafter.yml
+=======
+>>>>>>> e8002d9 (Create release-drafter.yml)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
