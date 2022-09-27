@@ -1,0 +1,34 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+template: |
+  # Changelog
+  $CHANGES
+  See details of [all code changes](https://github.com/github/super-linter/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION) since previous release
+categories:
+  - title: '🔥 Breaking Changes'
+    labels:
+      - 'type/breaking'     
+  - title: '🚀 Features'
+    labels:
+      - 'type/feature'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'type/bugfix'
+  - title: '🧰 Maintenance'
+    labels:
+      - 'type/chore'
+  - title: '🔥 Hotfix'
+    labels:
+      - 'type/hotfix'
+change-template: '- $TITLE by @$AUTHOR (#$NUMBER)'
+version-resolver:
+  major:
+    labels:
+      - 'type/breaking'
+  minor:
+    labels:
+      - 'type/feature'
+  patch:
+    labels:
+      - 'type/hotfix'
+  default: minor
