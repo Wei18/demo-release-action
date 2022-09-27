@@ -1,0 +1,4 @@
+type/feature: ['feature/*', 'feat/*']
+type/bugfix: ['fix/*', 'bugfix/*']
+type/chore: 'chore/*'
+type/hotfix: 'hotfix/*'
