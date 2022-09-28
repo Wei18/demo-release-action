@@ -7,16 +7,20 @@ jobs:
   milestone:
     runs-on: ubuntu-latest
     steps:
-    - name: "Set due_on"
+    - name: Set parameter
       id: set-due-on
-      run: echo "::set-output name=due_on::$(TZ="Asia/Taipei" date "+%Y-%m-%d" --date="next fri")"
-  
+      # macos: "$(TZ="Asia/Taipei" date -Idate -v +7d)"
+      # lunux: "$(TZ="Asia/Taipei" date "+%Y-%m-%d" --date="next fri")"
+      run: |
+        echo "::set-output name=title::$(TZ="Asia/Taipei" date "+%Y-%m-%d" --date="next fri")"
+        echo "::set-output name=due_on::$(TZ="Asia/Taipei" date --iso-8601=seconds --date="next fri")"
+
     - name: Create a new milestone
       uses: oinume/create-scheduled-milestone-action@v1.0.2
       with:
-        title: "Done ${{ steps.set-due-on.outputs.due_on }}"
+        title: "Done ${{ steps.set-due-on.outputs.title }}"
         state: "open"
-        description: "v1.0.0"
+        description: "Created milestone for next weekly release."
         due_on: "${{ steps.set-due-on.outputs.due_on }}"
       env:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
