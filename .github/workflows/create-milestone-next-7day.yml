@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: "Set due_on"
       id: set-due-on
-      run: echo "::set-output name=due_on::$(TZ="Asia/Taipei" date -Idate -v +7d)"
+      run: echo "::set-output name=due_on::$(TZ="Asia/Taipei" date "+%Y-%m-%d" --date="next fri")"
   
     - name: Create a new milestone
       uses: oinume/create-scheduled-milestone-action@v1.0.2
