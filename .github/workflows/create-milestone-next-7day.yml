@@ -1,0 +1,22 @@
+name: Create a new milestone+7day
+
+on:
+  workflow_dispatch:
+
+  milestone:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Set due_on"
+      id: set-due-on
+      run: echo "::set-output name=due_on::$(TZ="Asia/Taipei" date -Idate -v +7d)"
+  
+    - name: Create a new milestone
+      uses: oinume/create-scheduled-milestone-action@v1.0.2
+      with:
+        title: "Done ${{ steps.set-due-on.outputs.due_on }}"
+        state: "open"
+        description: "v1.0.0"
+        due_on: "${{ steps.set-due-on.outputs.due_on }}"
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+ 
