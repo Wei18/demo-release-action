@@ -3,6 +3,7 @@ name: Create a new milestone+7day
 on:
   workflow_dispatch:
 
+jobs:
   milestone:
     runs-on: ubuntu-latest
     steps:
